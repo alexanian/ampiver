@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <BASE href="/public/">-->
+    <!-- local testing base    <BASE href="file:///C:/Users/Tessa/Documents/Repositories/story-artifact-ui/public/">-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="IOT Smart Grid Ice Sensor Prototype for SYDE 361, Summer 2015">
+
+    <title>Ampiver Ice Sensor Reports</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+   <!-- Project CSS -->
+   <link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="css/ampiver.css">
+
+</head>
+<body id="index-body">    
+    <div class="container">
+        <div class="row" id="nav-title">
+            <div class="col-sm-3" id="nav-btns">
+                <a href="#"><div class="nav-btn">
+                    <img src="images/overview-list-icon.png" id="nav-list" class="img-responsive" />
+                    Map Overview
+                </div></a>
+                <a href="#"><div class="nav-btn">
+                    <img src="images/overview-list-icon.png" id="nav-list" class="img-responsive" />List Overview
+                </div></a>
+            </div>
+            <div class="col-sm-7" id="sensor-title">
+                <h2>Sensor Station 1</h2>
+                <p>Location: Davis Centre, University of Waterloo</p>
+            </div>
+            <div class="col-sm-2" id="status-container">
+                <div id="status-circle" class="standby">
+                    <div class="status-content">empty</div>
+                </div>
+                <p class="status">Standby</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" id="temperature-graph">
+                <h3>DHT22 Temperature Readings</h3>
+                <div id="amchartsdemo"></div>
+            </div>
+            <div class="col-md-6" id="humidity-graph">
+                <h3>DHT22 Humidity Readings</h3>
+                <p><em>To add: humidity line chart with Spark data</em></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" id="current-graph">
+                <h3>SCT013 Current Readings</h3>
+                <p><em>To add: current line chart with Spark data</em></p>        
+            </div>
+            <div class="col-md-6" id="current-graph">
+                <h3>Idealized Ampiver Readout</h3>
+                <p><em>To add: chart demonstrating what final UI could look like</em></p>        
+            </div>
+        </div>
+    </div><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- amcharts javascript -->
+    <script src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="http://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="http://www.amcharts.com/lib/3/themes/light.js"></script>
+    <script src="js/amchartsdemo.js"></script>
+</body>
+</html>

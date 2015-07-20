@@ -1,0 +1,90 @@
+// LESS for Ampiver IOT Smart Grid Ice Sensor Prototype for SYDE 361, Summer 2015
+
+//
+// Global Variables
+//
+// Colours
+@standby: #A0BAB2;     // Mode: temperature and humidity outside range where icing occurs - rgb(160, 186, 178)
+@no-current: #FAFB89;  // Mode: lower-than-expected current signal - rgb (250, 251, 137)
+@icing-risk: #97FBDA;  // Mode: temperature and humidity indicate ice possibility - rgb(151, 203, 218)
+@icing-event: #FF795F; // Mode: ice accretion currently detected on sensor - rgb(255, 121, 95)
+@light-blue: #D3F4EF;  // Accent colour - rgb(211, 244, 239)
+@dark-blue: #557486;   // Accent colour - rgb(85, 116, 134)
+
+// Size of status circles
+@circle-size: 80px;
+
+// Circle mixin with LESS from http://davidwalsh.name/css-circles
+.circle(@size: 0, @color: transparent) {
+    width: @size;
+    height: @size;
+    
+    -webkit-border-radius: @size / 2 + 0px;
+    -moz-border-radius: @size / 2 + 0px;
+    border-radius: @size / 2 + 0px;
+  
+    background-color: @color;
+}
+.bold-blue-text {
+    text-transform: uppercase;
+    color: @dark-blue;
+    font-weight: bold;
+}
+
+
+//
+// Styles applied on every page
+//
+h1, h2, h3 {
+    font-family: 'PT Sans', sans-serif;
+    font-weight: bold;
+    color: @dark-blue;
+}
+body {
+    background-color: @light-blue;
+}
+.container {
+    background-color: white;
+    padding-top: 2em;
+}
+
+//
+// Sensor readout page
+//
+#sensor-title {
+    text-align: center;
+}
+#amchartsdemo {
+    width: 100%;
+    height: 500px;
+}
+.nav-btn {
+    height: @circle-size;
+    width: @circle-size;
+    display: inline-block;
+    text-align: center;
+    .bold-blue-text;
+}
+.nav-btn:hover {
+    background-color: @light-blue;
+}
+#status-container {
+    text-align: center;
+    #status-circle { margin: 0px auto; }
+    #status-circle:hover { border: @light-blue 3px solid; }
+    #status-circle > .status-content {
+        float: left;
+        line-height: 1;
+        margin-top: -0.5em;
+        padding-top: 50%;
+        width: 100%;
+        color: white;
+    }
+    #status-circle.standby { .circle(@circle-size, @standby); }
+    #status-circle.no-current { .circle(@circle-size, @no-current); }
+    #status-circle.icing-risk { .circle(@circle-size, @icing-risk); }
+    #status-circle.icing-event { .circle(@circle-size, @icing-event); }
+}
+p.status {
+    .bold-blue-text;
+}
