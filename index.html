@@ -30,16 +30,17 @@
 <body id="index-body">    
     <div class="container">
         <div class="row" id="nav-title">
-            <div class="col-sm-3" id="nav-btns">
+            <div id="nav-btns" class="col-sm-3 text-center">
+                <img src="images/ampiver-logo-sm.png" class="img-responsive" alt="Ampiver"/>
                 <a href="#"><div id="nav-list" class="nav-btn">
-                    <span class="nav-page-name">Map</span>
+                    <p class="nav-page-name">Map</p>
                 </div></a>
                 <a href="#"><div id="nav-map" class="nav-btn">
-                    <span class="nav-page-name">List</span>
+                    <p class="nav-page-name">List</p>
                 </div></a>
             </div>
-            <div class="col-sm-7" id="sensor-title">
-                <h2>Sensor Station 1</h2>
+            <div class="col-sm-7 text-center">
+                <h2>Prototype Sensor Station Readout</h2>
                 <p id="sensor-info"><span class="bold-blue-text">Location</span>: Davis Centre, University of Waterloo<br/>
                 <span class="bold-blue-text">Current Status</span>:Standby</p>
             </div>
@@ -50,23 +51,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6" id="temperature-graph">
-                <h3>DHT22 Temperature Readings</h3>
-                <div id="amchartsdemo"></div>
+            <div class="col-md-4 readout-container">
+                <h3 class="readout-h3">DHT22 Temperature</h3>
+                <div class="readout"><span id="temp-readout">21.9<span class="readout-unit">&deg;C</span></div>
             </div>
-            <div class="col-md-6" id="humidity-graph">
-                <h3>DHT22 Humidity Readings</h3>
-                <p><em>To add: humidity line chart with Spark data</em></p>
+            <div class="col-md-4 readout-container">
+                <h3 class="readout-h3">DHT22 Humidity</h3>
+                <div class="readout"><span id="humi-readout">46.2</span><span class="readout-unit">%</span></div>
+            </div>
+            <div class="col-md-4 readout-container">
+                <h3 class="readout-h3">SCT013 Current</h3>
+                <div class="readout"><span id="curr-readout">0.03</span><span class="readout-unit">A</span></div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6" id="current-graph">
-                <h3>SCT013 Current Readings</h3>
-                <p><em>To add: current line chart with Spark data</em></p>        
-            </div>
-            <div class="col-md-6" id="current-graph">
-                <h3>Idealized Ampiver Readout</h3>
-                <p><em>To add: chart demonstrating what final UI could look like</em></p>        
+            <div class="col-md-12 readout-container">
+                <h3 class="readout-h3">Idealized Readout</h3>
+                <div id="amchartsdemo"></div>
             </div>
         </div>
     </div><!-- /.container -->
@@ -84,6 +85,7 @@
     <script src="http://www.amcharts.com/lib/3/themes/light.js"></script>
     <script src="js/amchartsdemo.js"></script>
     <script src="js/vex.combined.min.js"></script>
-    <script src="js/ampiver.js"></script>
+    <script src="js/ampiver-vex.js"></script>
+    <script src="js/ampiver-spark.js"></script>
 </body>
 </html>
