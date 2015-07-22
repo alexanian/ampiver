@@ -30,7 +30,24 @@
     color: @dark-blue;
     font-weight: bold;
 }
-
+// Gradient mixin from: https://github.com/dmitryf/elements/blob/master/elements.less
+.gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
+  background: @color;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, @start),
+                               color-stop(1, @stop));
+  background: -ms-linear-gradient(bottom,
+                                  @start,
+                                  @stop);
+  background: -moz-linear-gradient(center bottom,
+                                   @start 0%,
+                                   @stop 100%);
+  background: -o-linear-gradient(@stop,
+                                 @start);
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@stop,@start));
+}
 
 //
 // Styles applied on every page
@@ -59,32 +76,36 @@ body {
     height: 500px;
 }
 .nav-btn {
-    height: @circle-size;
-    width: @circle-size;
+    height: 50px;
+    width: 50px;
     display: inline-block;
     text-align: center;
-    .bold-blue-text;
 }
 .nav-btn:hover {
-    background-color: @light-blue;
+    .gradient(@light-blue, rgba(255,121,95,0.4), rgba(255,121,95,0.4));
+    background-image: url("../images/overview-list-icon.png") no-repeat;
+    background-size: 100%;
 }
-#status-container {
+#nav-list {
+    background: url("../images/overview-list-icon.png") no-repeat;
+    background-size: 100%;
+}
+#nav-map {
+    background: @dark-blue;
+}
+#current-status, .status-container {
     text-align: center;
-    #status-circle { margin: 0px auto; }
-    #status-circle:hover { border: @light-blue 3px solid; }
-    #status-circle > .status-content {
-        float: left;
-        line-height: 1;
-        margin-top: -0.5em;
-        padding-top: 50%;
-        width: 100%;
-        color: white;
-    }
-    #status-circle.standby { .circle(@circle-size, @standby); }
-    #status-circle.no-current { .circle(@circle-size, @no-current); }
-    #status-circle.icing-risk { .circle(@circle-size, @icing-risk); }
-    #status-circle.icing-event { .circle(@circle-size, @icing-event); }
 }
-p.status {
-    .bold-blue-text;
+.status-circle:hover { border: @light-blue 3px solid; }
+.status-circle { margin: 0px auto; }
+.status-circle > .status-content {
+    float: left;
+    line-height: 1;
+    margin-top: -0.5em;
+    padding-top: 50%;
+    width: 100%;
 }
+.status-circle.standby { .circle(@circle-size, @standby); }
+.status-circle.no-current { .circle(@circle-size, @no-current); }
+.status-circle.icing-risk { .circle(@circle-size, @icing-risk); }
+.status-circle.icing-event { .circle(@circle-size, @icing-event); }

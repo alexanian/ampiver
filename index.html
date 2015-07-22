@@ -23,30 +23,30 @@
     
    <!-- Project CSS -->
    <link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
-   <link rel="stylesheet" href="css/ampiver.css">
-
+   <link href="css/ampiver.css" rel="stylesheet" type="text/css">
+   <link href="css/vex.css" rel="stylesheet">
+   <link href="css/vex-theme-flat-attack.css" rel="stylesheet">
 </head>
 <body id="index-body">    
     <div class="container">
         <div class="row" id="nav-title">
             <div class="col-sm-3" id="nav-btns">
-                <a href="#"><div class="nav-btn">
-                    <img src="images/overview-list-icon.png" id="nav-list" class="img-responsive" />
-                    Map Overview
+                <a href="#"><div id="nav-list" class="nav-btn">
+                    <span class="nav-page-name">Map</span>
                 </div></a>
-                <a href="#"><div class="nav-btn">
-                    <img src="images/overview-list-icon.png" id="nav-list" class="img-responsive" />List Overview
+                <a href="#"><div id="nav-map" class="nav-btn">
+                    <span class="nav-page-name">List</span>
                 </div></a>
             </div>
             <div class="col-sm-7" id="sensor-title">
                 <h2>Sensor Station 1</h2>
-                <p>Location: Davis Centre, University of Waterloo</p>
+                <p id="sensor-info"><span class="bold-blue-text">Location</span>: Davis Centre, University of Waterloo<br/>
+                <span class="bold-blue-text">Current Status</span>:Standby</p>
             </div>
-            <div class="col-sm-2" id="status-container">
-                <div id="status-circle" class="standby">
-                    <div class="status-content">empty</div>
+            <div class="col-sm-2" id="current-status" class="status-container">
+                <div class="standby status-circle">
+                    <div class="status-content"><span class="glyphicon glyphicon-time" aria-hidden="true"></div>
                 </div>
-                <p class="status">Standby</p>
             </div>
         </div>
         <div class="row">
@@ -83,5 +83,7 @@
     <script src="http://www.amcharts.com/lib/3/serial.js"></script>
     <script src="http://www.amcharts.com/lib/3/themes/light.js"></script>
     <script src="js/amchartsdemo.js"></script>
+    <script src="js/vex.combined.min.js"></script>
+    <script src="js/ampiver.js"></script>
 </body>
 </html>
