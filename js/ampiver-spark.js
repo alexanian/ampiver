@@ -3,22 +3,48 @@
 // SPARK
 // Communicate with the Spark Core
 */
-function getSparkVariables() {
-    var deviceID = "54ff6a066672524849231267";;
-    var accessToken = "6426d7cefc253a5cc13db176fa7990cdb7f1d122"; // Access token expires August 1 2015
-    var varName = "temp_str";
+var deviceID = "54ff6a066672524849231267";
+var accessToken = "6426d7cefc253a5cc13db176fa7990cdb7f1d122"; // Access token expires August 1 2015
 
-        requestURL = "https://api.spark.io/v1/devices/" + deviceID + "/" + varName + "/?access_token=" + accessToken;
-        $.getJSON(requestURL, function(json) {
-                 document.getElementById("temp-readout").innerHTML = json.result;
+window.setInterval(function() {
+    requestURL = "https://api.spark.io/v1/devices/" + deviceID + "/humi/?access_token=" + accessToken;
+    $.getJSON(requestURL, function(json) {
+                 $("#humi-readout").innerHTML = json.result;
                  });
-    }, 10000);
-}
+    setSensorMode();
+}, 2000);   
+window.setInterval(function() {
+    requestURL = "https://api.spark.io/v1/devices/" + deviceID + "/curr/?access_token=" + accessToken;
+    $.getJSON(requestURL, function(json) {
+                 $("#curr-readout").innerHTML = json.result;
+                 });
+    setSensorMode();
+}, 2000);   
+window.setInterval(function() {
+    requestURL = "https://api.spark.io/v1/devices/" + deviceID + "/tmpr/?access_token=" + accessToken;
+    $.getJSON(requestURL, function(json) {
+                 $("#tmpr-readout").innerHTML = json.result;
+                 });
+    setSensorMode();
+}, 2000);
 
-$(document).ready( function() {
-    $('#current-status').click(showStatusDetails);
+// Set mode - probably could be made more efficient
+function setSensorMode() {
+    curr = parseFloat($("#curr-readout").innerHTML);
+    tmpr = parseFloat($("#tmpr-readout").innerHTML);
+    console.log($("#curr-readout"));
+    console.log(curr);
+    console.log(tmpr);
+
+    // Remove sensor status class
+    $("#sensor-status").removeClass( "standby no-current icing-risk icing-event" )
     
-    /* Read all 3 values (humidity, temperature, current) from the Spark Core every 2s 
-    window.setInterval(getSparkVariables(), 2000);*/
-
-});
+    if (curr < 0.05) { // no current mode
+        $("#sensor-status").addClass( "no-current" );
+        alert(curr);
+    } else if (tmpr < -40.0 || tmpr > 0.0 ) { // standby mode - really ought to also check humidity
+        $("#sensor-status").addClass( "standby" );
+    } else { // icing-risk mode; icing-event not implemented since QCM does not transmit data
+        $("#sensor-status").addClass( "icing-risk" );
+    }
+}

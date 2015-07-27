@@ -27,5 +27,5 @@ function showStatusDetails() {
 }
 
 $(document).ready( function() {
-    $('#current-status').click(showStatusDetails);
+    $('#sensor-status').click(showStatusDetails);
 });
